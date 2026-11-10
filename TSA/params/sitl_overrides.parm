@@ -1,0 +1,10 @@
+# SITL only. Load AFTER tsa_base.param. Replaces the MSP sensors with simulated ones.
+# Do not load on the real vehicle.
+SIM_FLOW_ENABLE,1
+FLOW_TYPE,10
+RNGFND1_TYPE,100
+RNGFND1_MIN,0.02
+RNGFND1_MAX,3
+RNGFND1_GNDCLR,0.1
+SIM_GPS1_ENABLE,0
+SIM_TERRAIN,0

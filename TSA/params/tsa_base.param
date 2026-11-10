@@ -1,0 +1,58 @@
+# TSA drone base parameters - ArduCopter 4.7.2, Matek H743-Mini V3
+# Load in Mission Planner: Config > Full Parameter List > Load from file > Write Params, then reboot.
+# Names checked against the 4.7.2 source. Load twice: some groups only appear after a reboot.
+
+# Frame and ESC. 12 = BetaFlight X motor order, so the Betaflight-wired 4-in-1 harness
+# works as is (use 1 only if you re-pin motors to ArduPilot order). Confirm with motor test.
+FRAME_CLASS,1
+FRAME_TYPE,12
+MOT_PWM_TYPE,6
+MOT_HOVER_LEARN,2
+
+# ELRS (CRSF) on TX6/RX6 = SERIAL7. BRD_ALT_CONFIG=1 turns the RX6 pad from RCIN into a UART RX.
+BRD_ALT_CONFIG,1
+SERIAL7_PROTOCOL,23
+RSSI_TYPE,3
+
+# MTF-01 (MSP, 115200) on TX4/RX4 = SERIAL6
+SERIAL6_PROTOCOL,32
+SERIAL6_BAUD,115
+RNGFND1_TYPE,32
+RNGFND1_ORIENT,25
+# 4.7 uses metres here (RNGFND1_MIN_CM / MAX_CM no longer exist)
+RNGFND1_MIN,0.02
+RNGFND1_MAX,3
+# PLACEHOLDER: MEASURE sensor lens to floor, quad on landing gear, in metres
+RNGFND1_GNDCLR,0.03
+FLOW_TYPE,7
+
+# EKF3: optical flow for horizontal velocity, rangefinder for height, no GPS
+EK3_SRC1_POSXY,0
+EK3_SRC1_VELXY,5
+EK3_SRC1_POSZ,2
+EK3_SRC1_VELZ,0
+EK3_SRC1_YAW,1
+GPS1_TYPE,0
+FENCE_ENABLE,0
+
+# Compass: Matek M10Q-5883 (QMC5883L) on the FC I2C pads, compass only. The H743-Mini has none onboard.
+COMPASS_ENABLE,1
+COMPASS_USE,1
+COMPASS_EXTERNAL,1
+
+# RC failsafe: always Land. FS_OPTIONS must NOT contain bit 2 (value 4, "Continue if in
+# Guided on RC failsafe"), or the script would hold position forever on RC loss. 16 is the default.
+FS_THR_ENABLE,3
+FS_THR_VALUE,975
+FS_OPTIONS,16
+
+# Lua scripting
+SCR_ENABLE,1
+
+# Flight modes on the mode switch: Stabilize (manual takeover) / Loiter / Guided
+FLTMODE1,0
+FLTMODE2,0
+FLTMODE3,5
+FLTMODE4,5
+FLTMODE5,4
+FLTMODE6,4
