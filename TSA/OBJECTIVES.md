@@ -46,7 +46,8 @@ competitions and demos in unknown venues.
 
 | Item | State |
 |---|---|
-| `scripts/stick_alt.lua` | written, checked against 4.7.2 source, not yet run |
+| `scripts/stick_alt.lua` | written, checked against 4.7.2 source, logic-tested offline (33 checks pass) |
+| `tests/test_stick_alt.lua` | offline logic test against a mocked flight controller, passing |
 | `params/tsa_base.param` | written, names checked against 4.7.2 source |
 | `BRINGUP.md` checklist | written |
 | SITL test (`SITL.md`) | procedure written, not yet run |
